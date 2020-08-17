@@ -29,6 +29,7 @@ input.onButtonPressed(Button.AB, function () {
     //print
     basic.showString(morseSend)
     radio.sendString(morseSend);
+    //reset array
     morseLetter= []
     serial.writeLine("clear")
 })
