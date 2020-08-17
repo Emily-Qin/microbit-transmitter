@@ -50,6 +50,7 @@ input.onGesture(Gesture.Shake, function () {
     morseLetter.shift()
 })
 
+//checking what gets received
 radio.onReceivedString(function (receivedString) {
     basic.showString(receivedString);
     serial.writeString(morseSend)
