@@ -47,7 +47,7 @@ input.onButtonPressed(Button.B, function () {
 
 // Shaking - erases the previous entry - > dot/dash
 input.onGesture(Gesture.Shake, function () {
-    morseLetter.shift()
+    morseLetter.splice(-1,1)
 })
 
 //checking what gets received
