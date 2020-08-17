@@ -35,6 +35,7 @@ input.onButtonPressed(Button.AB, function () {
         }
     }
 
+    
     morseSend = ""
     //unpack the array
     for (let k = 0; k <= morseLetter.length - 1; k++) {
@@ -45,7 +46,6 @@ input.onButtonPressed(Button.AB, function () {
     radio.sendString(morseSend);
     //reset array
     morseLetter= []
-   
 })
 
 // Shaking - erases the previous entry - > dot/dash
@@ -53,153 +53,153 @@ input.onGesture(Gesture.Shake, function () {
     morseLetter.pop()
 })
 
-
-
 //RECEIVER
 radio.onReceivedString(function (receivedString) {
+        basic.showString(receivedString);
+
     //checking for matches
     //a
-    if (morseSend==".-") {
+    if (receivedString==".-") {
         basic.showString("A")
     }
     //b
-    else if (morseSend=="-...") {
+    else if (receivedString=="-...") {
         basic.showString("B")
     }
     //c
-     else if (morseSend=="-.-.") {
+     else if (receivedString=="-.-.") {
         basic.showString("c")
     }
     //d
-     else if (morseSend=="-..") {
+     else if (receivedString=="-..") {
         basic.showString("D")
     }
     //e
-     else if (morseSend==".") {
+     else if (receivedString==".") {
         basic.showString("E")
     }
     //f
-     else if (morseSend=="..-.") {
+     else if (receivedString=="..-.") {
         basic.showString("F")
     }
     //g
-     else if (morseSend=="--.") {
+     else if (receivedString=="--.") {
         basic.showString("G")
     }
     //h
-     else if (morseSend=="....") {
+     else if (receivedString=="....") {
         basic.showString("H")
     }
     //i
-     else if (morseSend=="..") {
+     else if (receivedString=="..") {
         basic.showString("I")
     }
     //j
-     else if (morseSend==".---") {
+     else if (receivedString==".---") {
         basic.showString("J")
     }
     //k
-     else if (morseSend=="-.-") {
+     else if (receivedString=="-.-") {
         basic.showString("K")
     }
     //l
-     else if (morseSend==".-..") {
+     else if (receivedString==".-..") {
         basic.showString("L")
     }
     //m
-     else if (morseSend=="--") {
+     else if (receivedString=="--") {
         basic.showString("M")
     }
     //n
-     else if (morseSend=="-.") {
+     else if (receivedString=="-.") {
         basic.showString("N")
     }
     //o
-     else if (morseSend=="---") {
+     else if (receivedString=="---") {
         basic.showString("O")
     }
     //p
-     else if (morseSend==".--.") {
+     else if (receivedString==".--.") {
         basic.showString("P")
     }
     //q
-     else if (morseSend=="--.-") {
+     else if (receivedString=="--.-") {
         basic.showString("Q")
     }
     //r
-     else if (morseSend==".-.") {
+     else if (receivedString==".-.") {
         basic.showString("R")
     }
     //s
-     else if (morseSend=="...") {
+     else if (receivedString=="...") {
         basic.showString("S")
     }
     //t
-     else if (morseSend=="-") {
+     else if (receivedString=="-") {
         basic.showString("T")
     }
     //u
-     else if (morseSend=="..-") {
+     else if (receivedString=="..-") {
         basic.showString("U")
     }
     //v
-     else if (morseSend=="...-") {
+     else if (receivedString=="...-") {
         basic.showString("V")
     }
     //w
-     else if (morseSend==".--") {
+     else if (receivedString==".--") {
         basic.showString("W")
     }
     //x
-     else if (morseSend=="-..-") {
+     else if (receivedString=="-..-") {
         basic.showString("X")
     }
     //y
-     else if (morseSend=="-.--") {
+     else if (receivedString=="-.--") {
         basic.showString("Y")
     }
     //z
-     else if (morseSend=="--..") {
+     else if (receivedString=="--..") {
         basic.showString("Z")
     }
     //1
-     else if (morseSend==".----") {
+     else if (receivedString==".----") {
         basic.showString("1")
     }
     //2
-     else if (morseSend=="..---") {
+     else if (receivedString=="..---") {
         basic.showString("2")
     }
     //3
-     else if (morseSend=="...--") {
+     else if (receivedString=="...--") {
         basic.showString("3")
     }
     //4
-     else if (morseSend=="....-") {
+     else if (receivedString=="....-") {
         basic.showString("4")
     }
     //5
-     else if (morseSend==".....") {
+     else if (receivedString==".....") {
         basic.showString("5")
     }
     //6
-     else if (morseSend=="-....") {
+     else if (receivedString=="-....") {
         basic.showString("6")
     }
     //7
-     else if (morseSend=="--...") {
+     else if (receivedString=="--...") {
         basic.showString("7")
     }
     //8
-     else if (morseSend=="---..") {
+     else if (receivedString=="---..") {
         basic.showString("8")
     }
     //9
-     else if (morseSend=="----.") {
+     else if (receivedString=="----.") {
         basic.showString("9")
     }
     //0
-    else if (morseSend=="-----") {
+    else if (receivedString=="-----") {
         basic.showString("0")
     }
     //anything else
