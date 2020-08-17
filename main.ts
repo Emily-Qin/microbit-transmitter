@@ -126,13 +126,18 @@ if (morseSend == ".-") {
 })
 
 radio.onReceivedString(function (receivedString) {
+    let checked = false
+    while (checked ==false) {
         if (receivedString == letterSend) {
-            basic.showIcon(IconNames.Yes)
+        basic.showIcon(IconNames.Yes)
+        checked = true
         }
         else {
+            basic.pause(100)
             radio.sendString(morseSend)
         } 
-        // reset array
-        morseSend = ""
-        morseLetter = []
+    }
+    // reset array - PROBLEM array does not reset when invalid or when message not received
+    morseSend = ""
+    morseLetter = []
     })
