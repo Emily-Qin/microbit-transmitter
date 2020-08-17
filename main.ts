@@ -34,8 +34,6 @@ input.onButtonPressed(Button.AB, function () {
             led.unplot(i, j)
         }
     }
-
-    
     morseSend = ""
     //unpack the array
     for (let k = 0; k <= morseLetter.length - 1; k++) {
