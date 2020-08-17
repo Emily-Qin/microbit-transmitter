@@ -39,16 +39,17 @@ input.onButtonPressed(Button.AB, function () {
         morseSend += morseLetter[k]
     }
     //print
-    basic.showString(morseSend)
+    //basic.showString(morseSend)
     radio.sendString(morseSend);
     //reset array
     morseLetter= []
+    morseSend = ""
     serial.writeLine("clear")
 })
 
 // Shaking - erases the previous entry - > dot/dash
 input.onGesture(Gesture.Shake, function () {
-    morseLetter.splice(-1,1)
+    morseLetter.pop()
 })
 
 //checking what gets received
@@ -56,7 +57,7 @@ radio.onReceivedString(function (receivedString) {
     basic.showString(receivedString);
     serial.writeString(morseSend)
 })
-/*
+
 //RECEIVER
 radio.onReceivedString(function (receivedString) {
     //checking for matches
@@ -209,4 +210,3 @@ radio.onReceivedString(function (receivedString) {
         basic.showString("Invalid")
     }
 })
-*/
