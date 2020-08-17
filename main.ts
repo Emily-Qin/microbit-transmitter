@@ -14,6 +14,18 @@ input.onButtonPressed(Button.A, function () {
     morseLetter.push(".")
 })
 
+// Button B - adds a dash
+input.onButtonPressed(Button.B, function () {
+    basic.showLeds(`
+        . . . . .
+        . . . . .
+        . # # # .
+        . . . . .
+        . . . . .
+        `)
+    morseLetter.push("-")
+})
+
 // Button A+B - sends the letter
 input.onButtonPressed(Button.AB, function () {
     // turn off lights first
@@ -32,18 +44,6 @@ input.onButtonPressed(Button.AB, function () {
     //reset array
     morseLetter= []
     serial.writeLine("clear")
-})
-
-// Button B - adds a dash
-input.onButtonPressed(Button.B, function () {
-    basic.showLeds(`
-        . . . . .
-        . . . . .
-        . # # # .
-        . . . . .
-        . . . . .
-        `)
-    morseLetter.push("-")
 })
 
 // Shaking - erases the previous entry - > dot/dash
