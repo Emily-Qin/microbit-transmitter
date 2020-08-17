@@ -34,17 +34,18 @@ input.onButtonPressed(Button.AB, function () {
             led.unplot(i, j)
         }
     }
+
+    morseSend = ""
     //unpack the array
     for (let k = 0; k <= morseLetter.length - 1; k++) {
         morseSend += morseLetter[k]
     }
     //print
-    //basic.showString(morseSend)
+    basic.showString(morseSend)
     radio.sendString(morseSend);
     //reset array
     morseLetter= []
-    morseSend = ""
-    serial.writeLine("clear")
+   
 })
 
 // Shaking - erases the previous entry - > dot/dash
@@ -52,11 +53,7 @@ input.onGesture(Gesture.Shake, function () {
     morseLetter.pop()
 })
 
-//checking what gets received
-radio.onReceivedString(function (receivedString) {
-    basic.showString(receivedString);
-    serial.writeString(morseSend)
-})
+
 
 //RECEIVER
 radio.onReceivedString(function (receivedString) {
