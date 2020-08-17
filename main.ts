@@ -126,6 +126,7 @@ if (morseSend == ".-") {
 
 })
 
+//infinite loop
 while (receivedResponse == false) {
     basic.pause(100)
     basic.showString("r")
