@@ -2,7 +2,7 @@ let morseLetter: string[] = []
 let morseSend = ""
 morseLetter = []
 let letterSend =""
-let receivedResponse 
+let receivedResponse
 
 // Button A - adds a dot
 input.onButtonPressed(Button.A, function () {
@@ -48,9 +48,9 @@ input.onButtonPressed(Button.AB, function () {
     // print
     basic.showString(morseSend)
     radio.sendString(morseSend)
- //   receivedResponse = false
+  
    
-if (morseSend == ".-") {
+    if (morseSend == ".-") {
         letterSend = "A"
     } else if (morseSend == "-...") {
         letterSend ="B"
@@ -124,28 +124,38 @@ if (morseSend == ".-") {
         letterSend ="0"
     } 
 
+    receivedResponse = false
+    basic.pause(3000)
+
+    while (receivedResponse == false) {
+        basic.showString(morseSend)
+        radio.sendString(morseSend)   
+        basic.pause(3000)
+    } 
+
 })
 
-/*
-//infinite loop
-while (receivedResponse == false) {
-    basic.pause(100)
-    basic.showString("r")
-    radio.sendString(morseSend)   
-} 
-*/
+
+
 
 //only works when it receives a string
 radio.onReceivedString(function (receivedString) {
    if (receivedString == letterSend) {        
         basic.showIcon(IconNames.Yes)
-      //  receivedResponse = true
-
+        receivedResponse = true
+         // reset array - PROBLEM array does not reset when invalid or when message not received
+         morseSend = ""
+         morseLetter = []
     }
-    /*else {
+    else if (receivedString == "Invalid") {
+        basic.showIcon(IconNames.No)  
+        receivedResponse = true
+         // reset array - PROBLEM array does not reset when invalid or when message not received
+         morseSend = ""
+         morseLetter = []  
+    }
+    else {
         receivedResponse = false
-    } */
-    // reset array - PROBLEM array does not reset when invalid or when message not received
-    morseSend = ""
-    morseLetter = []
+    } 
+    
 })
