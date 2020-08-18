@@ -45,11 +45,11 @@ input.onButtonPressed(Button.AB, function () {
     for (let k = 0; k <= morseLetter.length - 1; k++) {
         morseSend = "" + morseSend + morseLetter[k]
     }
-    // print
+    // print and send
     basic.showString(morseSend)
     radio.sendString(morseSend)
   
-   
+  //check
     if (morseSend == ".-") {
         letterSend = "A"
     } else if (morseSend == "-...") {
@@ -127,6 +127,7 @@ input.onButtonPressed(Button.AB, function () {
     receivedResponse = false
     basic.pause(3000)
 
+    //if no response received, resend the message
     while (receivedResponse == false) {
         basic.showString(morseSend)
         radio.sendString(morseSend)   
@@ -135,27 +136,24 @@ input.onButtonPressed(Button.AB, function () {
 
 })
 
-
-
-
-//only works when it receives a string
 radio.onReceivedString(function (receivedString) {
+    //if correct, show check mark
    if (receivedString == letterSend) {        
         basic.showIcon(IconNames.Yes)
         receivedResponse = true
-         // reset array - PROBLEM array does not reset when invalid or when message not received
+        //reset
          morseSend = ""
          morseLetter = []
     }
+    //if incorrect, show cross
     else if (receivedString == "Invalid") {
         basic.showIcon(IconNames.No)  
         receivedResponse = true
-         // reset array - PROBLEM array does not reset when invalid or when message not received
          morseSend = ""
          morseLetter = []  
     }
+    // keep resending
     else {
         receivedResponse = false
     } 
-    
 })
